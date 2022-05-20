@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--{% if user.is_doctor %}
+
+<ul>
+{% for i in patients_list %}
+    <li><a href="{% url 'detail' i.user %}">{{i}}</li>
+{% endfor %}
+</ul>
+<ul>
+
+
+
+
+{% elif user.is_patient%}
+    <h2> Hello, patient </h2>
+    
+    {% for item in vitals_list %}
+        {{item.date}}    
+{% endfor %}
+
+
+
+    <a href= {% url 'create_record'%}>Add Record</a>
+{% else %}
+    <h2>Log in or sign up</h2
+{% endif %}-->
+<h1>Hello, World<h2>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2> Hello, patient </h2>
+<ul>
+{% for item in vitals_list %}
+        <li>{{item.date}}, 
+                <ul>
+                        <li>Blood Pressure: {{item.blood_pressure}} mm/Hg</li>
+                        <li>Temperature {{item.temperature}}C</li>
+                </ul>
+        </li>   
+{% endfor %}
+</ul>
+<a href= {% url 'create_record'%}>Add Record</a>
+{% endblock %}
