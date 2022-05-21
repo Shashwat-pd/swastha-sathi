@@ -2,8 +2,42 @@
 
 {% block content %}
 
-{{vitals_list}}
-{{vitals_list.blood_pressure}}
+<div class="container px-4 py-5" id="featured-3">
+        <p class="pb-2 border-bottom" style="font-size:100px;">Daily Vitals</p>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-primary bg-gradient text-white fs-2 mb-3">
+            </div>
+      </div>
 
+      <div class="list-group w-auto">
+        {% for item in vitals_list %}          
+          <div class="d-flex gap-2 w-100 justify-content-between" style="padding-top: 50px;">
+            <div>
+              <h2 class="mb-0">{{item.date}}</h2>
+              <p class="mb-0 opacity-75"><div class="list-group w-auto">
+                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                  <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                      <p class="mb-0 opacity-75">            
+                        <ul>
+                                <li>Blood Pressure: {{item.blood_pressure}} mm/Hg</li>
+                                <li>Temperature: {{item.temperature}}&deg;C</li>
+                                <li>Sugar Level: {{item.sugar_level}}mg/dl</li>
+                                <li>Weight: {{item.weight}}mg/dl</li>
+                        </ul>
+                        </p>
+                    </div>
+          </div>
+        </a>
+        {% endfor %}          
+      </div>
+      <h2>Reports</h2>
+{% for item in report_list %}
+                <ul>
+                        <li><img src="{{item.url}}" width="210" height="297"><li>
+                </ul>
+{% endfor %}
+<a href={% url 'review_create' id %} class="btn btn-primary">Give review</a>
 
 {% endblock content %}

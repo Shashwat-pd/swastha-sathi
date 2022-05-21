@@ -7,10 +7,24 @@
         <li>{{item.date}}, 
                 <ul>
                         <li>Blood Pressure: {{item.blood_pressure}} mm/Hg</li>
-                        <li>Temperature {{item.temperature}}C</li>
+                        <li>Temperature: {{item.temperature}}&deg;C</li>
+                        <li>Sugar Level: {{item.sugar_level}}mg/dl</li>
+                        <li>Weight: {{item.weight}}mg/dl</li>
                 </ul>
         </li>   
 {% endfor %}
+<h2>Reports</h2>
+{% for item in report_list %}
+                <ul>
+                        <li><img src="{{item.url}}" width="210" height="297"><li>
+                </ul>
+{% endfor %}
+<h2>Reviews</h2>
+{% for item in reviews %}
+                <ul>
+                        <li>{{item}}</li>
+                </ul>
+{% endfor %}
 </ul>
-<a href= {% url 'create_record'%}>Add Record</a>
-{% endblock %}
+<a href= {% url 'create_record' %}>Add Record</a>
+{% endblock %} 

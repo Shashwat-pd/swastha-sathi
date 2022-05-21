@@ -25,7 +25,7 @@ class PatientSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('home')
+        return redirect('patient')
 
 
 class DoctorSignUpView(CreateView):
@@ -40,13 +40,10 @@ class DoctorSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('home')
+        return redirect('doctor')
 
 
 def login_success(request):
-    """
-    Redirects users based on whether they are in the admins group
-    """
     if request.user.is_patient:
         # user is an admin
         return redirect("http://127.0.0.1:8000/patient")

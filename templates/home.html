@@ -1,31 +1,73 @@
-{% extends 'base.html' %}
+{%load static%}
+<!doctype html>
+<html>
 
-{% block content %}
-<!--{% if user.is_doctor %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>E-Health Manager</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://kit.fontawesome.com/ac298c0bbf.js" crossorigin="anonymous"></script>
 
-<ul>
-{% for i in patients_list %}
-    <li><a href="{% url 'detail' i.user %}">{{i}}</li>
-{% endfor %}
-</ul>
-<ul>
-
-
-
-
-{% elif user.is_patient%}
-    <h2> Hello, patient </h2>
+        <!--    <link rel="script" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js">-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
-    {% for item in vitals_list %}
-        {{item.date}}    
-{% endfor %}
-
-
-
-    <a href= {% url 'create_record'%}>Add Record</a>
-{% else %}
-    <h2>Log in or sign up</h2
-{% endif %}-->
-<h1>Hello, World<h2>
-{% endblock %}
-
+    </head>
+    
+    <body>
+    
+        <nav class="nav">
+    
+            <div class="image">
+    
+            </div>
+            <div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a>
+                        <li><a href="ourworks.html">Blogs</a>
+                            <li><a href="about.html">ABOUT</a>
+                                <li><a href="tel:9800000000">CONTACT</a>
+                </ul>
+                </ul>
+            </div>
+    
+            <div class="hamburger">
+                <div id="itag" class="line"></div>
+                <div id="itag" class="line"></div>
+                <div class="line"></div>
+            </div>
+    
+        </nav>
+    
+        <div class="landing container" id="landing">
+            <div class="button">
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"> logout</a>
+                {% else %}
+                <a href="{% url 'login' %}"> Log In</a>
+                {% endif %}
+            </div>
+    
+    
+            <div class="text">
+                <div class="show">
+                    <h1>The best, <span></span></h1>
+                    <h1>friend for your<span></span></h1>
+                    <h1>Healthy life<span></span></h1>
+                </div> <br>
+            </div>
+            <div class="button_">
+                <a href="{% url 'signup' %}"> Get started with E-Health Manager </a>
+            </div>
+    
+    
+        </div>
+    
+    
+            </body>
+    
+    </html>

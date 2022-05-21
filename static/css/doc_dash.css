@@ -1,0 +1,530 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.nav {
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: -50vw;
+    z-index: 300000;
+    transition: all .6s ease-in-out;
+}
+
+.nav.open {
+    left: 0;
+    top: 0;
+    transition: all .6s ease-in-out;
+}
+
+.nav>.BRAND {
+    width: 100%;
+    background-color: rgb(34, 80, 139);
+    display: flex;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    padding: 5vh 0vw;
+    align-items: center;
+}
+
+.nav>.image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.nav>.image>.name {
+    font-size: 15px;
+}
+
+.nav>.image>.desc {
+    font-size: 10px;
+}
+
+.nav>.image>img {
+    width: 80px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.nav-elements {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-links {
+    width: 100%;
+    list-style-type: none;
+}
+
+.nav-links li {
+    margin: 30px 0;
+    padding: 20px 0;
+    width: 100%;
+    transition: 0.6s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav-links>li:hover {
+    background-color: #efefef;
+}
+
+.nav-links li a {
+    color: rgb(34, 80, 139);
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.header {
+    width: 100%;
+    height: 43vh;
+    background-color: rgb(34, 80, 139);
+}
+
+.header>.sub_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+    font-size: larger;
+    color: #fff;
+}
+
+.header>.sub_nav>.search {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.header>.sub_nav>.search input[type='text'] {
+    width: 100%;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 10px;
+    font-size: .8rem;
+    color: #fff;
+    background: none;
+}
+
+.header>.sub_nav>.search input[type='text']:focus {
+    border: none;
+    outline: none;
+}
+
+.header>.sub_nav>.icons>i {
+    margin: 25px 5px;
+}
+
+.hamburger {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    z-index: 30000000000000000;
+}
+
+.hamburger>.line {
+    width: 30px;
+    height: 3px;
+    background-color: #FFF;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+
+.heading {
+    color: #fff;
+    margin: 0px 5vw;
+}
+
+.heading>h1 {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.heading>h4 {
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.first_section {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first_row {
+    width: 95%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3em;
+    top: -10vh;
+    z-index: 100000;
+}
+
+.first_row>.col {
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    z-index: 100000;
+}
+
+.first_row>.col-1 {
+    background-color: #fff;
+    box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -webkit-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -moz-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+}
+
+.first_row>.col-1>img {
+    width: 100%;
+}
+
+.first_row>.col-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.1rem;
+}
+
+.snippet {
+    background-color: #fff;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0rem;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.9s ease-in-out;
+    box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -webkit-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -moz-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+}
+
+.snippet:hover {
+    background-color: #fdd1ea;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.second_section {
+    width: 100%;
+    margin: 50px 0;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second_row {
+    width: 95%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3em;
+    top: -10vh;
+    z-index: 100000;
+}
+
+.second_row>.col {
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 100000;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -webkit-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -moz-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+}
+
+.second_row>.col-2>.counter {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numb {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.third_section {
+    width: 95%;
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    align-self: center;
+    z-index: 100000;
+    background-color: #fff;
+    box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -webkit-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -moz-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fourth_section {
+    width: 100%;
+    margin-top: 100px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fourth_row {
+    width: 95%;
+    position: relative;
+    top: -10vh;
+    z-index: 100000;
+}
+
+.fourth_row>.col {
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    z-index: 100000;
+    background-color: #fff;
+    box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -webkit-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -moz-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    padding: 10px;
+}
+
+.second_row>.col-1>img {
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+}
+
+.table>.ds-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.table>.ds-table td,
+.ds-table th {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.table>.ds-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 20px;
+}
+
+.table>.ds-table th {
+    color: #ffffff;
+    background: rgb(34, 80, 139);
+}
+
+.ds-table th:nth-child(odd) {
+    color: #ffffff;
+    background: #a1a1a1;
+}
+
+.ds-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.BMI_CALCULATOR {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.719)), url("running.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.BMI_CALCULATOR>.compartments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.BMI_CALCULATOR>.Bmi_title {
+    display: inline-block;
+    text-transform: uppercase;
+    border-bottom: 4px solid rgb(34, 80, 139);
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    color: #fff;
+}
+
+.BMI_CALCULATOR>.compartments>form {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 30px 0px;
+    font-size: 1em;
+    /*box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -webkit-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    -moz-box-shadow: 3px 4px 14px 2px rgba(195, 197, 193, 0.75);
+    */
+    color: #fff;
+}
+
+.BMI_CALCULATOR>.compartments>form input[type='number'] {
+    width: 30%;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 10px;
+    font-size: .8rem;
+    color: #fff;
+    background: rgb(255, 255, 255);
+}
+
+.BMI_CALCULATOR>.compartments>form input[type='submit'] {
+    width: 30%;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    background: rgb(34, 80, 139);
+    color: #fff;
+}
+
+.BMI_CALCULATOR>.compartments>form input[type='number']:focus {
+    border: none;
+    outline: none;
+}
+
+.BMI_CALCULATOR>.compartments>.about_BMI>.text {
+    color: #fff;
+    width: 70%;
+    padding: 30px;
+}
+
+footer {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(34, 80, 139);
+}
+
+@media screen and (max-width: 610px) {
+    .vanish_1 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .snippet h2 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .snippet h2 {
+        font-size: 0.8em;
+    }
+    .snippet h4 {
+        font-size: 0.6em;
+        padding: 5px 0px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .vanish {
+        display: none;
+    }
+    .hamburger {
+        width: 20px;
+        height: 20px;
+    }
+    .hamburger .line {
+        width: 10px;
+        margin: 2px 0px;
+    }
+    nav.open .BRAND {
+        font-size: 0.7em;
+        padding: 2vh 0vw;
+    }
+    nav>.BRAND {
+        font-size: 0.7em;
+        padding: 2vh 0vw;
+    }
+    .header>.sub_nav>.icons>i {
+        margin: 2vh 5px;
+        font-size: .7em;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .first_row {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .second_row {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .fourth_row {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .nav.open {
+        width: 50vw;
+        left: 0;
+    }
+}
