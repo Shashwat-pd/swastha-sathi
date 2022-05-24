@@ -46,7 +46,7 @@
         <div class="landing container" id="landing">
             <div class="button">
                 {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}"> logout</a>
+                <a href="{% url 'logout' %}"> Log out</a>
                 {% else %}
                 <a href="{% url 'login' %}"> Log In</a>
                 {% endif %}
@@ -61,7 +61,11 @@
                 </div> <br>
             </div>
             <div class="button_">
-                <a href="{% url 'signup' %}"> Get started with E-Health Manager </a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'login_success' %}"> Go to Dashboard </a>
+                {% else %}
+                <a href="{% url 'signup' %}"> Get started with Swastha Sathi </a>
+                {% endif %}
             </div>
     
     

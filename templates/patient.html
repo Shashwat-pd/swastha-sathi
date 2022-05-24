@@ -1,30 +1,364 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html>
 
-{% block content %}
-<h2> Hello, patient </h2>
-<ul>
-{% for item in vitals_list %}
-        <li>{{item.date}}, 
-                <ul>
-                        <li>Blood Pressure: {{item.blood_pressure}} mm/Hg</li>
-                        <li>Temperature: {{item.temperature}}&deg;C</li>
-                        <li>Sugar Level: {{item.sugar_level}}mg/dl</li>
-                        <li>Weight: {{item.weight}}mg/dl</li>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DashBoard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/patient_dash.css'%}">
+    <script src="https://kit.fontawesome.com/ac298c0bbf.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="sub_nav">
+
+
+            <div class="hamburger">
+
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+
+            </div>
+            <div class="search">
+                <input type="text" name="search_for_doctors" id="search" placeholder="Search for doctors">
+                <i class="fa-solid fa-magnifying-glass" style="color: white; font-size :14px;"></i>
+            </div>
+
+            <div class="icons">
+
+                <i class="fa fa-envelope-open"></i>
+                <i class="fa fa-cog"></i>
+                <a style = "background : red; padding: 10px 20px; text-decoration : none; color:white; border-radius: 10px" href={% url 'logout' %}>Log out</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="heading">
+            <h1> Welcome Back, {{ user.username }}! </h1>
+        </div>
+    </div>
+    <div class="first_section">
+        <div class="first_row">
+            <div class="col col-1"><br>
+                <center>
+                    <h2> Your latest BP data</h2>
+                </center>
+                <canvas class="chart" id="myChart" style="width:200px;"></canvas>
+
+            </div>
+
+            <div class="col col-2">
+
+                <div class="snippet snippet-1">
+                    <i class="fa-solid fa-heart-circle-plus" style="color: rgb(255, 0, 21); font-size: 5rem"></i>
+                    <div class="right">
+                        <h2>Your latest BP Level</h2>
+                        <h4>{{vitals_list.0.blood_pressure}} mm/Hg</h4>
+                        
+                </div>
+                </div>
+                <div class="snippet snippet-2">
+
+
+                    <i class="fa-solid fa-heart-pulse" style="color:  red ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Sugar Level</h2>
+                        <h4>{{vitals_list.0.sugar_level}} mg/dL</h4>
+                    </div>
+                </div>
+                <div class="snippet snippet-3">
+
+                    <i class="fa-solid fa-person-running" style="color:  rgb(239, 243, 14) ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Weight in Kg</h2>
+                        <div class="counter">
+                        <h2>{{vitals_list.0.weight}}
+                        </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="snippet snippet-4">
+
+
+                    <i class="fa-solid fa-person-running" style="color:  rgb(35, 207, 29) ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Temperature</h2>
+                        <h4>
+                            {{vitals_list.0.temperature}} &deg;C</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="nav">
+        <div class="BRAND">
+            E-Health Manager
+        </div>
+        <div class="image">
+            <img src="{% static 'img/harke.svg' %}">
+            <p class="name"> {{user.username}} </p>
+            <p class="desc"> Age: 68, S: M </p>
+        </div>
+
+        <div class="nav-elements">
+            <center>
+                <ul class="nav-links">
+                    <li> <a href=" /">HOME</a>
+                      <li>  <a href= {% url 'create_record'%}>Add Record</a>
+                            <li> <a href=" ">Take an appointment</a>
+
+                                <li> <a href="{% url 'logout' %}">Log Out</a>
                 </ul>
-        </li>   
-{% endfor %}
-<h2>Reports</h2>
-{% for item in report_list %}
-                <ul>
-                        <li><img src="{{item.url}}" width="210" height="297"><li>
-                </ul>
-{% endfor %}
-<h2>Reviews</h2>
-{% for item in reviews %}
-                <ul>
-                        <li>{{item}}</li>
-                </ul>
-{% endfor %}
-</ul>
-<a href= {% url 'create_record' %}>Add Record</a>
-{% endblock %} 
+            </center>
+        </div>
+    </nav>
+
+
+    <div class="second_section">
+        <div class="second_row">
+
+            <div class="col col-1">
+                <center>
+                    <h2> Your Blood Sugar Level</h2>
+                </center>
+                <canvas id="BSChart" style="width:auto;"></canvas>
+
+
+
+            </div>
+
+            <div class="col col-2">
+
+                <H2> Weight </h2>
+                <canvas id="C_Chart" style="width:auto;"></canvas>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="fourth_section">
+        <div class="fourth_row">
+
+            <div class="col col-1">
+                <br>
+                <center>
+                    <h2> Your datas </h2>
+                </center>
+                <br>
+                <div class="table">
+                    <table class="ds-table">
+                        <thead>
+                            <tr>
+                                <th>Date.</th>
+                                <th class="vanish">Blood Pressure</th>
+                                <th class="vanish vanish_1 ">Sugar Level</th>
+                                <th class="vanish vanish_1 ">Temperature</th>
+                                <th class="vanish vanish_1 ">Weight</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for item in vitals_list%}
+                                <tr>
+                        
+                                <td>{{item.date}}</td>
+                                <td class="vanish">{{item.blood_pressure}}  mm/dL</td>
+                                <td class="vanish vanish_1 ">{{item.sugar_level}} mg/dL</td>
+                                <td class="vanish vanish_1 ">{{item.temperature}} C</td>
+                                <td class="vanish vanish_1 ">{{item.weight}} Kg</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <center>
+        <a href = "{% url 'create_record'%}" style = "background : #0000ff; padding: 10px 20px; text-decoration : none; color:white; border-radius: 10px"> Add Data</a>
+        </center>
+    <div class = "reports">
+        <div class="reports_row">
+            <div class="col col-1">
+                <center>
+                    <h2> Your latest reports </h2>
+                </center>
+                {%for item in report_list%}
+<img src = {{item.url}} width = "150px" Height = "150px">
+
+                {%endfor%}
+    </div>
+
+
+    <div class = "reviews">
+        <div class="reviews_row">
+                <center>
+                    <h2> Your latest reviews </h2>
+                </center>
+                <ul type ="none">
+                {%for item in reviews%}
+                <li style = "padding: 5px 0px">{{item}}</li>
+        
+                {%endfor%}        
+        </ul>
+</div>
+    </div>
+
+
+    <div class="BMI_CALCULATOR">
+        <div class="Bmi_title">
+            <h1>Your BMI CALCULATOR</h1>
+        </div>
+        <div class="compartments">
+            <form>
+                <label for="height_in_feet">Height in Feet</label>
+                <input type="number" name="Heigh_in_Feet" id="Height_in_feet"><br>
+                <label for="Height_in_inches">Height in inches</label>
+                <input type="number" name="Height_in_inches" id="Height_in_inches"><br>
+                <label for="height_in_feet">Weight in Pounds</label>
+                <input type="number" name="weight_in_pounds" id="weight_in_pounds"><br>
+                <input type="submit" value="Calculate BMI"><br>
+                <span class='outpt'></span>
+            </form>
+            <div class="about_BMI">
+                <div class="text">
+                    <h1>What is BMI?</h1><br>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque adipisci eaque alias vitae, neque, expedita illo, distinctio libero eos consequatur nisi maxime debitis vel earum odio aliquid exercitationem! Laboriosam, vel. Lorem ipsum
+                        dolor sit amet consectetur adipisicing elit. Inventore pariatur temporibus nobis dolor aut veritatis excepturi magnam qui optio incidunt, reiciendis, libero eos velit rerum! Minus, corporis. Tenetur, sint corporis?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <footer>
+        <center>
+            <p>&copy; Swastha Sathis. All rights reserved. Designed By Code digger. </p>
+        </center>
+    </footer>
+
+
+<!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]
+-->
+    
+    <script src="{% static 'js/dashboard.js' %}" async defer></script>
+    <script>
+
+        const h = document.querySelector(".hamburger");
+const n = document.querySelector(".nav");
+
+h.addEventListener("click", () => {
+    n.classList.toggle("open");
+})
+
+
+        var xyValues = [200, 150, 150, 110, 140, 110, 120],
+            c = [170, 200, 250, 291, 320, 390, 410];
+        var myChart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "6/1/2020", "7/1/2020", "8/1/2020", "9/1/2020", "10/6/2020", "11/7/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: xyValues,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+
+        var BSChart = new Chart("BSChart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "6/1/2020", "7/1/2020", "8/1/2020", "9/1/2020", "10/1/2020", "11/1/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: xyValues,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+
+        var C_Chart = new Chart("C_Chart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "6/1/2020", "7/1/2020", "8/1/2020", "9/1/2020", "10/1/2020", "11/1/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: c,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

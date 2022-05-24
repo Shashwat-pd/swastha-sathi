@@ -2,16 +2,18 @@
 
 
 
+
+
+
 {% block content %}
-  <div class="row">
-    <div class="col-md-8 col-sm-10 col-12">
-      <h2>Sign up as a {{ user_type }}</h2>
-      <form method="post" novalidate>
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}">
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Sign up</button>
-      </form>
-    </div>
-  </div>
-{% endblock %}
+
+<h1 style = "background : rgb(34,80,139);color : #fff; text-align:center; text-transform: uppercase; padding: 20px 9px;"> Signup </h1>
+
+  <form method="post" novalidate style="padding-top:15px; padding-left:100px">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Sign up</button>
+  </form>
+
+{% endblock content %}

@@ -34,7 +34,7 @@ class PatientDetailView(TemplateView):
             if value.patient.user.id == self.kwargs.get('id'):
                 vitals_list.append(value)
         report_list = []
-        for i in DailyVitals.objects.all():
+        for i in vitals_list:
             if i.monthly_report:
                 report_list.append(i.monthly_report)
         context['id'] = self.kwargs.get('id')
@@ -51,10 +51,11 @@ class PatientView(ListView):
         context = super().get_context_data(**kwargs)
         reviews = Review.objects.filter(patient=self.request.user.patient)
         report_list = []
-        for i in DailyVitals.objects.all():
+        vitals_list =  DailyVitals.objects.filter(patient=self.request.user.patient)        
+        for i in vitals_list:
             if i.monthly_report:
                 report_list.append(i.monthly_report)
-        context['vitals_list'] = DailyVitals.objects.filter(patient=self.request.user.patient)
+        context['vitals_list'] = vitals_list.reverse()
         context['reviews'] = reviews
         context['report_list'] = report_list
         return context

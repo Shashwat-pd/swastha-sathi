@@ -2,8 +2,13 @@
 
 {% block content %}
 
-<form method="post" enctype="multipart/form-data">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
+<h1 style = "background : rgb(34,80,139);color : #fff; text-align:center; text-transform: uppercase; padding: 20px 9px;"> Add your records </h1>
+<center>
+<form method="post" enctype = "multipart/form-data">{% csrf_token %} <br><br>
+
+    {{form.as_p}}
+    <input type="submit" value="Save" style =  "border : none; background : rgb(34,80,139); padding: 10px 20px; text-decoration : none; color:white; border-radius: 10px"></input>
 </form>
+</center>
+
 {% endblock content %}

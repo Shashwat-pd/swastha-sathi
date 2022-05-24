@@ -2,10 +2,12 @@
 
 {% block content %}
 
+<h1 style = "background : rgb(34,80,139);color : #fff; text-align:center; text-transform: uppercase; padding: 20px 9px;"> Give A review </h1>
 <form method="post">{% csrf_token %} 
-
+<center>
     {{form.as_p}}
-    <input type="submit" value="Save"></input>
+    <input type="submit" value="Save" style =  "border : none; background : rgb(34,80,139); padding: 10px 20px; text-decoration : none; color:white; border-radius: 10px"></input>
+</center>
 </form>
 
 {% endblock content %}
