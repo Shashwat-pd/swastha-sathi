@@ -8,7 +8,6 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 
 
-# Create your views here.
 class SignUpView(TemplateView):
     template_name = 'registration/signup.html'
 
@@ -43,9 +42,9 @@ class DoctorSignUpView(CreateView):
         return redirect('doctor')
 
 
+#redirects the user to the link according to the user profile
 def login_success(request):
     if request.user.is_patient:
-        # user is an admin
         return redirect("http://127.0.0.1:8000/patient")
     else:
         return redirect("http://127.0.0.1:8000/doctor")

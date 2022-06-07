@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
+<!--
+    "patients_list" for list of patients under the doctor 
+        item.user.username for the username of the patients
+        item.user.id for the id of the user (to be kept in args of the URl )
+
+    {% url 'detail' i.user.id%} to redirect to detailed view of the patient
+    {% url 'logout' %} for logout link
+-->
+
+
+
+
 {% block content %}
         <main>
                 <div class="position-relative overflow-hidden p-10 p-md-5 m-md-3 text-center bg-light">

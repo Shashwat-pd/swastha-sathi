@@ -1,13 +1,10 @@
-from asyncio.windows_events import NULL
+
 from cgitb import text
-from distutils.command.upload import upload
-from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 from accounts.models import Patient
 from django.urls import reverse
 
-# Create your models here.
 class DailyVitals(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateField(auto_now_add=True)

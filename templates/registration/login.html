@@ -7,7 +7,7 @@
 <center>
 <form method="post" novalidate style="padding-top: 50px;">
   {% csrf_token %}
-  {{form.as_p}}
+  {{form.as_p}} <!--form passed from the view-->
   <button type="submit" class="btn btn-primary">Log in</button>
 </form>
 </center>
