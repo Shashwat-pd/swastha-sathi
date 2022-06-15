@@ -42,8 +42,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Swastha Sathi is a web-app created to ease the medical counselling and solve the problem of reachability of doctors and accessbility of the patients.
-Find the motication behind the project <a href="https://www.canva.com/design/DAFBOlSEdvw/xvGbjnkZQgtY2Umwp59QRQ/view?utm_content=DAFBOlSEdvw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">here</a>
+Swastha Sathi is a web-app created to ease the medical counselling and solve the problem of reachability of doctors and accessibility of the patients.
+Find the motivation behind the project <a href="https://www.canva.com/design/DAFBOlSEdvw/xvGbjnkZQgtY2Umwp59QRQ/view?utm_content=DAFBOlSEdvw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">here</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
